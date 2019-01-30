@@ -79,5 +79,5 @@ Ref::Ref(const int b,const int c,const int v){ 	// Construct Ref from three inte
 		   getline(bibleFile,currentLine);
 	   }
 		
-	   return GetNextToken(currentLine, "\n");
+	   return GetNextToken(currentLine, "\r");
    }
