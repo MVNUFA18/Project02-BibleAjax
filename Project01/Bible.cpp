@@ -57,11 +57,12 @@ Verse* Bible::lookup(const int numberOfVerses, Ref ref, LookupResult &status, Re
 			}
 			//if the ref and ref object are identical, we found a match
 			else if (ref == readRef) {
-				status == SUCCESS;
+				status = SUCCESS;
 
 				//create an array, loop through for each number of verses and add one verse to the array each time.
 				Verse* arrayOfVerses = new Verse[numberOfVerses];
-				for (int i = 0; i < numberOfVerses && getline(bibleFile, currentLine); i++) {
+				arrayOfVerses[0] = Verse(currentLine);
+				for (int i = 1; i < numberOfVerses && getline(bibleFile, currentLine); i++) {
 					arrayOfVerses[i] = Verse(currentLine);
 				}
 				return arrayOfVerses;
