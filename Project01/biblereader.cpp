@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "biblereader.h"
 #include "Ref.h"
 #include "Verse.h"
@@ -59,39 +58,3 @@ int main(int argc, char ** argv) {
 	}
 	return 0;
 }
-
-//main (int argc, char **argv) {
-//	// Create Bible object to process the raw text file
-//	Bible kjv("/home/class/csc3004/Bibles/kjv-complete");
-//	
-//	Verse verse;
-//	int bookNumber, chapterNumber, verseNumber;
-//	LookupResult result;
-//
-//	//TEMPORARY COMMENT
-//	//cout << "Using Bible from: ";
-//	//kjv.display();
-//
-//	// Prompt for input: get reference to lookup
-//	// TODO: your program should get input from command line arguments instead.
-//
-//	//TEMPORARY COMMENT
-//	//cout << "What book, chapter and verse? " << flush;
-//	//cin >> b >> c >> v;	
-//
-//	//Gather Book, Chapter, Verse from user
-//
-//
-//	// Create a reference from the numbers
-//	Ref ref(b, c, v);
-//
-//	// Use the Bible object to retrieve the verse by reference
-//	cout << "Looking up reference: ";
-//	ref.display();
-//	cout << endl;
-//
-//	verse = kjv.lookup(ref, result);
-//	cout << "Result: " << endl;
-//	verse.display();
-//	cout << endl;
-//}

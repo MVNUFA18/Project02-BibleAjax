@@ -1,7 +1,6 @@
 // Bible class function definitions
 // Computer Science, MVNU
 
-#include "pch.h"
 #include "Ref.h"
 #include "Verse.h"
 #include "Bible.h" 

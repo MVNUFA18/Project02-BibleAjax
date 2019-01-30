@@ -1,7 +1,6 @@
 // Ref class function definitions
 // Computer Science, MVNU
 
-#include "pch.h"
 #include "Ref.h"
 #include <iostream>
 #include <string>
@@ -23,11 +22,11 @@ string GetNextToken(string& str, const string& delimiters = " ") {
 
   // Found a token, remove it from string, and return it                       
   string next = str.substr(startPos, endPos - startPos);
-  string rest = str.substr(endPos - startPos + 1, string::npos);
+  string rest = str.substr(endPos - startPos + 1,string::npos);
   str = rest;
   return(next);
 }
-//Could be rewritten to be recursive? Perhaps a base case of "when we reach x - perhaps an empty string, indicating end of input - we return"
+//Could be rewritten to be recursive? Perhaps a base case of "when we reach x - perhaps an empty string indicating end of input - we return"
 
 // Ref member functions
 class Bible;
@@ -39,13 +38,13 @@ Ref::Ref(const string s) {										// Parse constructor - receives a line "34:5
 	// parse the reference - notice, currently no error checking!
 	if (rtext.length() >= 5 ) {									// "1:1:1" (5 characters) would be the smallest acceptable input
 		// Grab book (first number)
-		string strbook = GetNextToken(rtext, ":");
+		string strbook = GetNextToken(rtext,":");
 		book = atoi(strbook.c_str());
 		// Grab chapter (number after first semicolon)
-		string strchap = GetNextToken(rtext, ":");
+		string strchap = GetNextToken(rtext,":");
 		chap = atoi(strchap.c_str());
 		// Grab verse (number after second semicolon)
-		string strverse = GetNextToken(rtext, " ");
+		string strverse = GetNextToken(rtext," ");
 		verse = atoi(strverse.c_str());
 	}
 }
@@ -67,7 +66,7 @@ Ref::Ref(const int b,const int c,const int v){ 	// Construct Ref from three inte
                (r.verse == verse) );
    }
 
-   void Ref::display() {				 	// Display Reference
+   void Ref::display() const{				 	// Display Reference
 	   string bookName = getBookName();
 	   cout << bookName << " " << chap << ":" << verse;
    }
@@ -77,7 +76,7 @@ Ref::Ref(const int b,const int c,const int v){ 	// Construct Ref from three inte
 	   string currentLine;
 	   //Loop through bible file until I reach the line with the book name assocaited with my book number.
 	   for (int i = 0; i < book; i++) {
-		   getline(bibleFile, currentLine);
+		   getline(bibleFile,currentLine);
 	   }
 		
 	   return GetNextToken(currentLine, "\n");

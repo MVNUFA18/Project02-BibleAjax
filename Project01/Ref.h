@@ -28,7 +28,7 @@ public:
    int getChap();									//Access Chapter Number
    int getVerse();									//Access Verse Number			
    bool operator==(const Ref);						// Comparison: determine if two references are equal
-   void display(); 									// Display the reference on cout, example output: John 3:16
+   void display() const; 							// Display the reference on cout, example output: John 3:16
 												    // Your version of display must show the book name
 													// corresponding to the stored book number.
 };

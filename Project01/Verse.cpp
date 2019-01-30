@@ -1,7 +1,6 @@
 // Verse class function definitions
 // Computer Science, MVNU
 
-#include "pch.h"
 #include "Verse.h"
 #include <iostream>
 
