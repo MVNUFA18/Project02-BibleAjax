@@ -11,14 +11,12 @@
 #include <stdlib.h>
 
 using namespace std;
-//#define delim "?/.,;:'" "
 
 
 Bible::Bible() { infile = "/home/class/csc3004/Bibles/kjv-complete"; }	// Default constructor
 
 Bible::Bible(const string s) { infile = s; }						    // Constructor – pass bible filename
 
-// REQUIRED: lookup finds a given verse in this Bible
 
 //Main lookup function - will forward along all other overloads to this function using dummy data
 Verse* Bible::lookup(const int numberOfVerses, Ref ref, LookupResult &status, Ref& prev) {
@@ -90,7 +88,6 @@ Verse* Bible::lookup(const int numberOfVerses, Ref ref, LookupResult& status)
 
 
 
-// REQUIRED: Return the reference after the given ref
 const Ref Bible::next(const Ref ref, LookupResult& status){
 	//Gets a verse AND the next verse, but only returns the verse after the first verse, effectively returning the 'next'.
 	Verse* tempVerse = lookup(2, ref, status);
@@ -100,7 +97,6 @@ const Ref Bible::next(const Ref ref, LookupResult& status){
 	return r;
 };
 
-// OPTIONAL: Return the reference before the given ref
 const Ref Bible::prev(const Ref ref, LookupResult& status) {
 	Ref previous;
 	Verse* verse = lookup(1,ref,status,previous);

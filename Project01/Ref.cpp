@@ -26,7 +26,6 @@ string GetNextToken(string& str, const string& delimiters = " ") {
   str = rest;
   return(next);
 }
-//Could be rewritten to be recursive? Perhaps a base case of "when we reach x - perhaps an empty string indicating end of input - we return"
 
 // Ref member functions
 class Bible;
@@ -35,8 +34,8 @@ Ref::Ref() {book = 0; chap = 0; verse = 0;}  					// Default constructor, Initia
 
 Ref::Ref(const string s) {										// Parse constructor - receives a line "34:5:7 text"
 	string rtext = s;											// make local copy of string to avoid modifying parameter
-	// parse the reference - notice, currently no error checking!
-	if (rtext.length() >= 5 ) {									// "1:1:1" (5 characters) would be the smallest acceptable input
+
+	if (rtext.length() >= 5 ) {									// "1 1 1" (5 characters including spaces) would be the smallest acceptable input
 		// Grab book (first number)
 		string strbook = GetNextToken(rtext,":");
 		book = atoi(strbook.c_str());
@@ -66,7 +65,7 @@ Ref::Ref(const int b,const int c,const int v){ 	// Construct Ref from three inte
                (r.verse == verse) );
    }
 
-   void Ref::display() const{				 	// Display Reference
+   void Ref::display() const{			// Display the reference
 	   string bookName = getBookName();
 	   cout << bookName << " " << chap << ":" << verse;
    }
