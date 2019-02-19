@@ -13,9 +13,13 @@
 using namespace std;
 
 
-Bible::Bible() { infile = "/home/class/csc3004/Bibles/kjv-complete"; }	// Default constructor
+//Bible::Bible() { infile = "/home/class/csc3004/Bibles/kjv-complete"; }	// Default constructor
+//Bible::Bible(const string s) { infile = s; }						    // Constructor – pass bible filename
 
-Bible::Bible(const string s) { infile = s; }						    // Constructor – pass bible filename
+Bible::Bible() { infile = "/home/class/csc3004/Bibles/kjv-complete", version = 1; }						// Default constructor - kjv and version 1
+Bible::Bible(const string s, int i) { infile = s; version = i; }										// Default Constructor – pass bible filename
+
+
 
 
 //Main lookup function - will forward along all other overloads to this function using dummy data
@@ -85,6 +89,16 @@ Verse* Bible::lookup(const int numberOfVerses, Ref ref, LookupResult& status)
 	Ref r;
 	return lookup(numberOfVerses, ref, status, r);
 }
+
+//string Bible::parseLine(string buffer) {
+//	string localDelim = "\",\"";
+//	string parsed;
+//	for (int x = 0; x < version; x++) {
+//		parsed = GetNextToken(buffer, localDelim);
+//	}
+//	parsed.erase(std::remove(parsed.begin(), parsed.end(), '"'), parsed.end());
+//	return parsed;
+//}
 
 
 

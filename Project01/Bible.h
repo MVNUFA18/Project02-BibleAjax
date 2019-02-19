@@ -20,12 +20,16 @@ using namespace std;
 
 enum LookupResult { SUCCESS, NO_BOOK, NO_CHAPTER, NO_VERSE, OTHER };					// status codes to be returned when looking up a reference
 static const string LookupResultStrings[] = { "Success", "No Book Found", "No Chapter Found", "No Verse Found", "Failed for an unknown reason" };
+static const string BookVersionString[] = { " ", "/home/class/csc3004/Bibles/kjv-complete", "/home/class/csc3004/Bibles/dby-complete", "/home/class/csc3004/Bibles/web-complete",
+												 "/home/class/csc3004/Bibles/webster-complete", "/home/class/csc3004/Bibles/ylt-complete" };
+
 
 class Bible {																		    // A class to represent a version of the bible
  private:
    static const int MIN_BOOK = 1, MAX_BOOK = 66;										//Book number must fall between 1 and 66
    string infile;																		// file path name
    ifstream instream;																	// input stream, used when file is open
+   int version;																			// represents the bible version
    bool isOpen;																			// true if file is open
    int currentLine;
 
@@ -33,7 +37,8 @@ class Bible {																		    // A class to represent a version of the bibl
  public:
    Bible();																				// Default constructor
    Bible(const string s);																// Constructor – pass name of bible file
-   
+   Bible(const string s, int i);														// Constructor – pass name of bible file and version number
+
    //// REQUIRED: Find and return a verse in this Bible, given a reference
    //const Verse lookup(Ref ref, LookupResult& status); 
    //// REQUIRED: Return the reference after the given ref
@@ -44,6 +49,7 @@ class Bible {																		    // A class to represent a version of the bibl
    Verse* lookup(Ref ref, LookupResult& status);										//Find and return a verse in the Bible using a given reference
    Verse* lookup(const int numberOfVerses, Ref ref, LookupResult& status);			    //Find more than one verse in the Bible using a given reference
    Verse* lookup(const int numberOfVerses, Ref ref, LookupResult& status, Ref& prev);   //Find more than one verse in the Bible and refer to previous verses
+   //string parseLine(string buffer);														//Parses line for bible version
 
    const Ref next(const Ref ref, LookupResult& status);									//Returns the reference following this reference (the next reference)
    const Ref prev(const Ref ref, LookupResult& status);									//Returns the reference before this reference (the previous reference)
